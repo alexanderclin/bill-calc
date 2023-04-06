@@ -75,7 +75,7 @@ const calculateBillSplit = () => {
     console.log(unaccountedTotalAfterTaxAndTip);
 
     // Make the table
-    const makeRow = (person, total) => {
+    const makeRow = (person, total, totalAfterTaxAndTip) => {
         let row = document.createElement('tr');
 
         let nameCell = document.createElement('td');
@@ -88,14 +88,19 @@ const calculateBillSplit = () => {
         totalCell.appendChild(totalCellText);
         row.appendChild(totalCell);
 
+        let percentCell = document.createElement('td');
+        let percentCellText = document.createTextNode(`${(total/totalAfterTaxAndTip)*100.0}%`);
+        percentCell.appendChild(percentCellText);
+        row.appendChild(percentCell);
+
         return row;
     };
     let table = document.createElement('table');
     if (unaccountedTotal !== 0) {
-        table.appendChild(makeRow("(unaccounted)", unaccountedTotalAfterTaxAndTip));
+        table.appendChild(makeRow("(unaccounted)", unaccountedTotalAfterTaxAndTip, totalAfterTaxAndTip));
     }
     totalPerPerson.forEach((value, key, map) => {
-        table.appendChild(makeRow(key, value));
+        table.appendChild(makeRow(key, value, totalAfterTaxAndTip));
     });
 
     // Display the table
