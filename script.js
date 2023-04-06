@@ -173,3 +173,12 @@ document.querySelector("#bill-form").addEventListener(
 document.querySelector("#price").addEventListener("keypress", handleEnter);
 
 document.querySelector("#add-item").addEventListener("click", addItem);
+
+const helpText = document.querySelector("#help-text");
+document.querySelector("#help-button").addEventListener('click', () => {
+    if (helpText.style.display === 'none') {
+        helpText.style.display = 'block';
+    } else {
+        helpText.style.display = 'none';
+    }
+});
