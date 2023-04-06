@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <style>
+        body {
+            background-color: #4c4c4a;
+            font-family: "Helvetica", "Arial", sans-serif;
+            max-width: 70ch;
+            padding: 2ch;
+            margin: auto;
+            color: #fffaf0;
+        }
+        a {
+            color: #525caf;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        input,
+        label {
+            display: block;
+        }
+        </style>
+        <title>Bill Splitter</title>
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <form id="bill-form">
+            <div id="item0" class="item">
+                <div style="float:left;">
+                    <label for="name">Item:</label>
+                    <input type="text" id="name" />
+                </div>
+                <div style="float:left;">
+                    <label for="purchasers">Purchasers:</label>
+                    <input type="text" id="purchasers"></textarea>
+                </div>
+                <div style="float:left;">
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" />
+                </div>
+                <div id="remove-button-div" style="float:left; display:none;" >
+                    <label>&nbsp;</label>
+                    <button id="remove-button" tabindex="-1">-</button>
+                </div>
+                <br style="clear:both;" />
+            </div>
+            <div id="item-end"></div>
+
+            <br style="clear:both;" />
+
+            <button type="button" id="add-item" tabindex="-1">Add Item</button>
+
+            <br style="clear:both;" /><br style="clear:both;" />
+
+            <label for="total">Total Pre Tax and Tip:</label>
+            <input type="number" id="total-pre" />
+            
+            <label for="total">Total After Tax and Tip:</label>
+            <input type="number" id="total-after" />
+        </form>
+        <hr />
+        <div id="results"></div>
+    </body>
+</html>
