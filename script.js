@@ -21,6 +21,8 @@ const calculateBillSplit = () => {
         // Check calculated price for error handling
         let calculatedPrice = 0.0;
 
+        let handledPercent = 0.0;
+
         let unhandledPurchasers = [];
 
         const purchasers = purchasersStr.split(",");
@@ -33,13 +35,14 @@ const calculateBillSplit = () => {
                 const purchaserPrice = purchaserPercent * price;
                 totalPerPerson.set(purchaserName, (totalPerPerson.get(purchaserName) ?? 0) + purchaserPrice);
                 calculatedPrice += purchaserPrice;
+                handledPercent += purchaserPercent;
             } else {
                 unhandledPurchasers.push(purchaserName);
             }
         });
 
         // Handle unhandled purchasers with an even split
-        const unhandledPurchaserPrice = (1.0/unhandledPurchasers.length) * price;
+        const unhandledPurchaserPrice = (1.0/unhandledPurchasers.length) * (1 - handledPercent) * price;
         unhandledPurchasers.forEach((purchaserName) => {
             totalPerPerson.set(purchaserName, (totalPerPerson.get(purchaserName) ?? 0) + unhandledPurchaserPrice);
             calculatedPrice += unhandledPurchaserPrice;
