@@ -15,6 +15,8 @@ const calculateBillSplit = () => {
         // Handle purchasers
         const purchasersStr = item.querySelector("#purchasers").value;
         if (purchasersStr.length === 0) {
+            // Remaining amount goes to the unaccounted total
+            unaccountedTotal += price;
             return;
         }
 
