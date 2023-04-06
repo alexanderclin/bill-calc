@@ -1,5 +1,3 @@
-
-
 // Compute the bill split
 // (Total per person / Total pre tax and tip) * Total after tax and tip
 const calculateBillSplit = () => {
